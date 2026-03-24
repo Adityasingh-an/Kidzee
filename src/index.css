@@ -1,10 +1,41 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-primary: #0055A5;
+    --bs-secondary: #FFC107;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-font-sans-serif: 'Poppins', system-ui, -apple-system, sans-serif;
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+}
 
 @theme {
-  --color-primary: #6B3A94;
-  --color-secondary: #FFC107;
-  --color-bg-light: #F3EBF9;
-  --color-accent: #FF5722;
+  --color-primary: var(--bs-primary);
+  --color-secondary: var(--bs-secondary);
+  --color-bg-light: #F2F8FF;
+  --color-accent: #00A3E0;
+  --color-lavender: #f3e8ff;
+  --font-heading: 'Fredoka', 'Outfit', sans-serif;
+  --font-body: 'Poppins', sans-serif;
 }
 
 html {
@@ -12,7 +43,30 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
+  color: var(--bs-dark);
 }
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+.premium-card {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 85, 165, 0.1);
+}
+
+.blob-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+

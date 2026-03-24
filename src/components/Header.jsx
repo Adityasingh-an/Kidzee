@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,35 +30,38 @@ export default function Header() {
 
   return (
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 shadow-lg ${isScrolled ? 'bg-primary py-1' : 'bg-primary py-2'}`}>
-      <div className="container mx-auto px-2 flex justify-between items-center w-full max-w-[1400px]">
+      <div className="w-full px-4 md:px-12 lg:px-20 flex justify-between items-center h-full">
         {/* Logo Area */}
         <a href="#home" className="flex items-center gap-2 group flex-shrink-0">
-          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md p-1">
-             <div className="w-full h-full bg-secondary rounded-full flex items-center justify-center font-black text-primary text-xl">
-               K
-             </div>
+          <div className="h-16 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105 border-0 p-0 m-0">
+             <img src="/src/assets/logo.jpg" alt="Kidzee Logo" className="h-full w-auto object-contain border-0 p-0 m-0 shadow-none outline-none" />
           </div>
-          <span className="text-white font-black text-2xl tracking-widest hidden sm:block">KIDZEE</span>
         </a>
 
         {/* Desktop Nav - Mirroring reference site exactly */}
-        <nav className="hidden xl:flex gap-x-4 items-center flex-wrap justify-end flex-grow ml-4">
+        <nav className="hidden xl:flex gap-x-6 items-center flex-wrap justify-end flex-grow ml-4 mr-6">
           {navLinks.map((link) => {
              return (
                <a 
                   key={link.name} 
                   href={link.path} 
-                  className={`font-semibold transition-colors text-[11px] uppercase tracking-wider relative group whitespace-nowrap text-white hover:text-secondary`}
+                  className={`font-heading font-bold transition-all text-[13px] uppercase tracking-tight relative group whitespace-nowrap text-white hover:text-secondary hover:scale-105`}
                >
                  {link.name}
-                 <span className={`absolute -bottom-1 left-0 h-[2px] bg-secondary transition-all w-0 group-hover:w-full`}></span>
+                 <span className={`absolute -bottom-1 left-0 h-[3px] bg-secondary transition-all w-0 group-hover:w-full rounded-full`}></span>
                </a>
              )
           })}
         </nav>
 
+        {/* Enroll Now Button */}
+        <a href="#admission" className="hidden sm:inline-flex items-center justify-center bg-secondary text-primary font-bold px-6 py-2 rounded-full hover:bg-purple-900 hover:text-white transition-all uppercase text-sm tracking-wider shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ml-auto xl:ml-0 mr-4 xl:mr-0 z-10 group/enroll">
+          Enroll Now
+          <ArrowRight className="ml-2 w-0 h-5 opacity-0 group-hover/enroll:w-5 group-hover/enroll:opacity-100 transition-all duration-300 ease-out" />
+        </a>
+
         {/* Mobile Menu Button */}
-        <button className="xl:hidden text-white hover:text-secondary transition-colors ml-auto" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className="xl:hidden text-white hover:text-secondary transition-colors sm:ml-0 ml-auto" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>

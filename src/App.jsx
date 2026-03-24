@@ -3,6 +3,7 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Programs from './components/Programs';
 import Contact from './components/Contact';
+import About from './components/About';
 
 function App() {
   return (
@@ -14,12 +15,12 @@ function App() {
         </section>
         {/* About section would go here, currently maybe missing or in Hero */}
         <section id="about">
-          {/* Placeholder if About doesn't exist yet */}
+          <About />
         </section>
-        <section id="programmes" className="pt-10">
+        <section id="programmes">
           <Programs />
         </section>
-        <section id="contact" className="pt-10">
+        <section id="contact">
           <Contact />
         </section>
       </main>
