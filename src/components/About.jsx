@@ -7,7 +7,7 @@ export default function About() {
       {/* Background Image Layer */}
       <div 
         className="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat pointer-events-none" 
-        style={{ backgroundImage: "url('/src/assets/Aboutbg.jpg')" }}
+        style={{ backgroundImage: "url('/assets/aboutbg.jpg')" }}
       ></div>
 
       {/* Decorative Floating Elements */}
@@ -30,7 +30,7 @@ export default function About() {
               {/* Image Container */}
               <div className="absolute inset-4 overflow-hidden blob-shape border-8 border-white shadow-inner">
                 <img 
-                  src="/src/assets/hero.png" 
+                  src="/assets/hero.png" 
                   alt="Kidzee Student" 
                   className="w-full h-full object-cover"
                 />

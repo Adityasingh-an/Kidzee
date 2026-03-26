@@ -34,7 +34,7 @@ export default function Header() {
         {/* Logo Area */}
         <a href="#home" className="flex items-center gap-2 group flex-shrink-0">
           <div className="h-16 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105 border-0 p-0 m-0">
-             <img src="/src/assets/logo.jpg" alt="Kidzee Logo" className="h-full w-auto object-contain border-0 p-0 m-0 shadow-none outline-none" />
+             <img src="/assets/logo.jpg" alt="Kidzee Logo" className="h-full w-auto object-contain border-0 p-0 m-0 shadow-none outline-none" />
           </div>
         </a>
 
