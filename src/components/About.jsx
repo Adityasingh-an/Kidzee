@@ -7,7 +7,7 @@ export default function About() {
       {/* Background Image Layer */}
       <div 
         className="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat pointer-events-none" 
-        style={{ backgroundImage: "url('/assets/Aboutbg.jpg')" }}
+        style={{ backgroundImage: "url('/assets/aboutbg.jpg')" }}
       ></div>
 
       {/* Decorative Floating Elements */}
