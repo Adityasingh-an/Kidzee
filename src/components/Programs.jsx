@@ -46,7 +46,7 @@ export default function Programs() {
       {/* Background Image Layer */}
       <div 
         className="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat pointer-events-none" 
-        style={{ backgroundImage: "url('/src/assets/programmbg.jpg')" }}
+        style={{ backgroundImage: "url('/assets/programmbg.jpg')" }}
       ></div>
 
       <div className="container mx-auto px-4 md:px-12 lg:px-24">

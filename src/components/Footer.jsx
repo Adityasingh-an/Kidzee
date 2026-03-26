@@ -6,7 +6,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden p-1">
-                <img src="/src/assets/kidzee logo.jpeg" alt="Kidzee Logo" className="w-full h-full object-contain" />
+                <img src="/assets/logo.jpg" alt="Kidzee Logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-white font-black text-2xl tracking-tighter">Akbarpur</span>
             </div>
