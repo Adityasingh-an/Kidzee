@@ -131,17 +131,20 @@ export default function Footer() {
             <div className="flex flex-col gap-4 text-sm text-bg-light/80">
               <div className="flex items-center gap-3">
                 <Phone size={16} />
-                <span>+91 98765 43210</span>
+                <span>+91 6390181919</span>
+                 <span>+91 6391181919</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Mail size={16} />
-                <span>info@kidzee.com</span>
+                <span>kidzeeakbarpur@gmail.com</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <MapPin size={16} />
-                <span>Akbarpur, Uttar Pradesh</span>
+                <span>697, Shastri Nagar, Akbarpur
+                Ambedkar Nagar, Uttar Pradesh
+                224122</span>
               </div>
             </div>
           </div>
