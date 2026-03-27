@@ -4,7 +4,7 @@ import { ArrowRight, Layout, Book, Music, Sun, Palette } from 'lucide-react';
 const programs = [
   {
     title: 'PlayGroup',
-    ageGroup: '2.5 - 3 Years',
+    ageGroup: '1.5 - 2.5 Years',
     duration: '2.5 Hours/Day',
     desc: "Children are born curious. They begin to explore the environment around them as soon as they are born. Kidzee's playgroup curriculum plays an important role in helping children continue their...",
     color: 'bg-blue-100 text-blue-500',
@@ -13,7 +13,7 @@ const programs = [
   },
   {
     title: 'Nursery',
-    ageGroup: '3.5 - 4 Years',
+    ageGroup: '2.5 - 3.5 Years',
     duration: '2.5 Hours/Day',
     desc: "To set a firm foundation in the early years of preschool, quality early childhood education is vital for the overall development of a child. The Nursery syllabus has the right array of activities and...",
     color: 'bg-green-100 text-green-500',
