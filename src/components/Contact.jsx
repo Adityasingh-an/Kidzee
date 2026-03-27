@@ -19,26 +19,45 @@ export default function Contact() {
             </svg>
           </h2>
           <p className="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
-            We're here to help! Reach out to us for any questions about admissions or our programs.
+            Reach out to us for any questions about admissions or our programs.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24">
+        {/* MOBILE VIEW: Small Icons Only */}
+        <div className="flex md:hidden flex-wrap justify-center items-center gap-6">
+          {contactLinks.map((link, index) => (
+            <a 
+              key={index} 
+              href={link.href}
+              className="flex flex-col items-center group transition-all duration-300"
+            >
+              <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-2 shadow-sm border border-blue-100 group-hover:bg-white group-hover:shadow-lg transition-all">
+                <img src={link.icon} alt={link.title} className="w-7 h-7 opacity-80" />
+              </div>
+              <span className="text-[10px] font-black text-primary uppercase tracking-tighter">
+                {link.title}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* LAPTOP/TABLET VIEW: Premium Cards */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {contactLinks.map((link, index) => (
             <a 
               key={index} 
               href={link.href}
               target={link.href.startsWith('http') ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="flex flex-col items-center group transition-all duration-300 hover:-translate-y-2"
+              className="premium-card group bg-white p-8 rounded-[2rem] text-center shadow-md hover:shadow-2xl transition-all duration-500 border-b-4 border-transparent hover:border-primary flex flex-col items-center h-full"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-50 rounded-full flex items-center justify-center mb-4 shadow-sm border-2 border-transparent group-hover:border-primary group-hover:bg-white group-hover:shadow-xl transition-all duration-300">
-                <img src={link.icon} alt={link.title} className="w-8 h-8 md:w-10 md:h-10 opacity-80 group-hover:opacity-100" />
+              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:rotate-6 transition-all duration-300 shadow-inner">
+                <img src={link.icon} alt={link.title} className="w-8 h-8 group-hover:invert group-hover:brightness-0 transition-all" />
               </div>
-              <h3 className="text-sm md:text-base font-black text-primary uppercase tracking-wider mb-1">
+              <h3 className="text-xl font-black text-primary mb-3 group-hover:text-secondary transition-colors">
                 {link.title}
               </h3>
-              <p className="text-xs md:text-sm text-gray-500 font-medium">
+              <p className="text-gray-500 text-sm font-medium leading-relaxed">
                 {link.details}
               </p>
             </a>
