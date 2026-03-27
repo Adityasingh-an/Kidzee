@@ -4,7 +4,7 @@ import { ArrowRight, Layout, Book, Music, Sun, Palette } from 'lucide-react';
 const programs = [
   {
     title: 'PlayGroup',
-    ageGroup: '2 - 3 Years',
+    ageGroup: '2.5 - 3 Years',
     duration: '2.5 Hours/Day',
     desc: "Children are born curious. They begin to explore the environment around them as soon as they are born. Kidzee's playgroup curriculum plays an important role in helping children continue their...",
     color: 'bg-blue-100 text-blue-500',
@@ -13,7 +13,7 @@ const programs = [
   },
   {
     title: 'Nursery',
-    ageGroup: '3 - 4 Years',
+    ageGroup: '3.5 - 4 Years',
     duration: '2.5 Hours/Day',
     desc: "To set a firm foundation in the early years of preschool, quality early childhood education is vital for the overall development of a child. The Nursery syllabus has the right array of activities and...",
     color: 'bg-green-100 text-green-500',
@@ -28,15 +28,6 @@ const programs = [
     color: 'bg-yellow-100 text-yellow-600',
     blobColor: '#eab308',
     icon: <Book size={32} />
-  },
-  {
-    title: 'Teacher Training Programme',
-    ageGroup: 'Adults',
-    duration: 'Integrated',
-    desc: "Zee Learn Preschool Teacher Training Programme is a Zee Learn Ltd initiative. Kidzee (Preschool vertical of Zee Learn Ltd) has set unrivalled standards in the CDE (Child Deve...",
-    color: 'bg-blue-200 text-blue-700',
-    blobColor: '#3b82f6',
-    icon: <Music size={32} />
   }
 ];
 
@@ -60,7 +51,7 @@ export default function Programs() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((prog, idx) => (
             <div 
               key={idx} 

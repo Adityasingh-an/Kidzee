@@ -9,11 +9,11 @@ export default function Hero() {
   // This array defines the five feature cards displayed at the bottom of the hero section.
   // We use objects to define the icon, main title, and subtitle for each feature.
   const features = [
-    { icon: <Brain size={26} className="text-primary" />, title: "Holistic", subtitle: "Learning" },
-    { icon: <GraduationCap size={26} className="text-primary" />, title: "Expert", subtitle: "Educators" },
-    { icon: <ShieldCheck size={26} className="text-primary" />, title: "Safe and", subtitle: "Secure" },
-    { icon: <Users size={26} className="text-primary" />, title: "Parental", subtitle: "Involvement" },
-    { icon: <Replace size={26} className="text-primary" />, title: "Smooth", subtitle: "Transition" }
+    { icon: <Brain size={20} className="text-primary" />, title: "Holistic", subtitle: "Learning" },
+    { icon: <GraduationCap size={20} className="text-primary" />, title: "Expert", subtitle: "Educators" },
+    { icon: <ShieldCheck size={20} className="text-primary" />, title: "Safe and", subtitle: "Secure" },
+    { icon: <Users size={20} className="text-primary" />, title: "Parental", subtitle: "Involvement" },
+    { icon: <Replace size={20} className="text-primary" />, title: "Smooth", subtitle: "Transition" }
   ];
 
   return (
@@ -48,13 +48,17 @@ export default function Hero() {
         ======================================== 
         These are the abstract and floating colorful shapes placed around the screen edges for a playful look.
       */}
-      {/* Top right floating circle with a star */}
-      <div className="absolute top-1/4 right-10 md:right-20 w-16 h-16 bg-primary rounded-full shadow-lg flex items-center justify-center opacity-90 z-0 ">
-         <Star size={32} className="text-secondary fill-secondary" />
-      </div>
+      {/* Classic Enquiry Button on the right side - SMALLER ON MOBILE */}
+      <a 
+        href="#contact" 
+        className="absolute top-6 right-4 md:top-12 md:right-10 lg:right-16 z-40 bg-white border-2 border-primary text-primary px-4 md:px-8 py-1.5 md:py-3 rounded-full font-bold text-xs md:text-base shadow-[0_4px_14px_0_rgba(0,85,165,0.39)] hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(0,85,165,0.23)] transition-all duration-300 flex items-center gap-1.5 md:gap-2 group cursor-pointer"
+      >
+        Enquiry
+        <span className="group-hover:translate-x-1 transition-transform font-black">→</span>
+      </a>
       
-      {/* Middle left large yellow circle with sparkles that rotates when hovered */}
-      <div className="absolute top-1/2 left-[5%] md:left-[10%] w-20 h-20 bg-secondary rounded-full shadow-xl flex items-center justify-center z-30 opacity-90 rotate-12 transform hover:rotate-180 transition-transform duration-700">
+      {/* Middle left large yellow circle with sparkles that rotates when hovered - HIDDEN ON MOBILE */}
+      <div className="hidden md:flex absolute top-1/2 left-[5%] md:left-[10%] w-20 h-20 bg-secondary rounded-full shadow-xl items-center justify-center z-30 opacity-90 rotate-12 transform hover:rotate-180 transition-transform duration-700">
          <Sparkles size={40} className="text-primary" />
       </div>
       
@@ -81,7 +85,7 @@ export default function Hero() {
           -------------------------------------- 
           This container holds the main circular image and the floating icons around it.
         */}
-        <div className="w-64 h-64 md:w-[26rem] md:h-[26rem] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] rounded-full border-[14px] md:border-[16px] border-white shadow-2xl relative flex justify-center items-center bg-gray-100 z-20 shrink-0 mx-auto lg:mx-0">
+        <div className="w-44 h-44 md:w-[26rem] md:h-[26rem] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] rounded-full border-[10px] md:border-[16px] border-white shadow-2xl relative flex justify-center items-center bg-gray-100 z-20 shrink-0 mx-auto lg:mx-0">
            
            {/* A spinning dashed border around the image */}
            <div className="absolute -inset-8 border-[3px] border-dashed border-primary/40 rounded-full animate-[spin_20s_linear_infinite]"></div>
@@ -103,13 +107,13 @@ export default function Hero() {
              Floating Icons around the image matching the playful theme 
              They use animations like 'bounce' and 'pulse' to make the section feel alive.
            */}
-           {/* Top left floating rocket */}
-           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-6 bg-white p-3 rounded-2xl shadow-lg border-2 border-primary rotate-[-15deg] animate-bounce z-10" style={{ animationDelay: '0ms' }}>
+           {/* Top left floating rocket - HIDDEN ON MOBILE */}
+           <div className="hidden md:block absolute -top-6 -left-6 md:-top-10 md:-left-6 bg-white p-3 rounded-2xl shadow-lg border-2 border-primary rotate-[-15deg] animate-bounce z-10" style={{ animationDelay: '0ms' }}>
              <Rocket size={32} className="text-primary fill-primary/20" />
            </div>
            
-           {/* Top right pulsing book */}
-           <div className="absolute top-12 -right-12 xl:-right-16 bg-white p-3 rounded-full shadow-lg border-2 border-secondary rotate-[10deg] animate-pulse z-10">
+           {/* Top right pulsing book - HIDDEN ON MOBILE */}
+           <div className="hidden md:block absolute top-12 -right-12 xl:-right-16 bg-white p-3 rounded-full shadow-lg border-2 border-secondary rotate-[10deg] animate-pulse z-10">
              <BookOpen size={28} className="text-secondary" />
            </div>
 
@@ -118,8 +122,8 @@ export default function Hero() {
              <Clock size={30} className="text-primary" />
            </div>
 
-           {/* Bottom left bouncing gamepad */}
-           <div className="absolute -bottom-10 left-12 xl:left-24 bg-white p-3 rounded-xl shadow-lg border-2 border-secondary rotate-[20deg] animate-bounce z-10" style={{ animationDelay: '300ms' }}>
+           {/* Bottom left bouncing gamepad - HIDDEN ON MOBILE */}
+           <div className="hidden md:block absolute -bottom-10 left-12 xl:left-24 bg-white p-3 rounded-xl shadow-lg border-2 border-secondary rotate-[20deg] animate-bounce z-10" style={{ animationDelay: '300ms' }}>
              <Gamepad2 size={28} className="text-secondary" />
            </div>
         </div>
@@ -144,7 +148,7 @@ export default function Hero() {
           </a>
 
           {/* Main Title / Headline of the page */}
-          <h1 className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.8rem] leading-[1.1] font-heading font-black text-primary mb-4 lg:mb-6 tracking-tight drop-shadow-sm w-full">
+          <h1 className="text-[2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[4.8rem] leading-[1.2] md:leading-[1.1] font-heading font-black text-primary mb-4 lg:mb-6 tracking-tight drop-shadow-sm w-full">
             Build A Foundation <br className="hidden md:block" />
             For A Lifetime Of <br className="hidden md:block" />
             <span className="text-secondary relative whitespace-nowrap">
@@ -164,7 +168,6 @@ export default function Hero() {
                <span className="bg-white/80 px-4 py-1.5 rounded-lg shadow-sm border border-blue-100 hover:border-primary transition-colors cursor-default whitespace-nowrap">Jr. K.G.</span>
                <span className="bg-white/80 px-4 py-1.5 rounded-lg shadow-sm border border-blue-100 hover:border-primary transition-colors cursor-default whitespace-nowrap">Sr. K.G.</span>
                <span className="bg-white/80 px-4 py-1.5 rounded-lg shadow-sm border border-blue-100 hover:border-primary transition-colors cursor-default whitespace-nowrap">Grade 1&2</span>
-               <span className="bg-white/80 px-4 py-1.5 rounded-lg shadow-sm border border-blue-100 hover:border-primary transition-colors cursor-default whitespace-nowrap"></span>
              </div>
           </div>
 
@@ -173,11 +176,11 @@ export default function Hero() {
             This iterates over the 'features' array defined at the top of the file
             and displays a styled card for each one.
           */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 xl:gap-5 w-full">
+          <div className="flex flex-nowrap md:flex-wrap justify-center lg:justify-start gap-1 pb-4 md:gap-4 xl:gap-5 w-full overflow-x-auto no-scrollbar">
              {features.map((feature, idx) => (
                <div 
                  key={idx} 
-                 className="bg-white rounded-[20px] p-2 flex flex-col items-center justify-center w-[85px] sm:w-[95px] md:w-[110px] xl:w-[125px] h-[100px] md:h-[115px] xl:h-[135px] shadow-sm hover:shadow-lg border-b-4 border-secondary hover:-translate-y-2 transition-all relative z-20 group shrink-0"
+                 className="bg-white rounded-[15px] md:rounded-[20px] p-1.5 md:p-2 flex flex-col items-center justify-center w-[65px] md:w-[110px] xl:w-[125px] h-[75px] md:h-[115px] xl:h-[135px] shadow-sm hover:shadow-lg border-b-2 md:border-b-4 border-secondary hover:-translate-y-1 transition-all relative z-20 group shrink-0"
                >
                  {/* Circle containing the feature icon */}
                  <div className="mb-1 md:mb-2 mt-1 bg-blue-50 p-2 md:p-3 rounded-full group-hover:scale-110 transition-transform">
