@@ -92,7 +92,7 @@ export default function Hero() {
            
            {/* The main child image, updated to show a child in a yellow dress */}
            <img 
-             src="/assets/singlechild.png" 
+             src="/assets/singleChild.png" 
              alt="Happy Student Learning" 
              className="w-full h-full object-cover rounded-full"
            />
