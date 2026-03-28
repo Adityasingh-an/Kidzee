@@ -157,7 +157,7 @@ export default function Footer() {
 
             <div className="rounded-xl overflow-hidden">
               <iframe
-                src="https://maps.google.com/maps?q=akbarpur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps?q=Kidzee%20Akbarpur%20Shastri%20Nagar%20Colony%20Akbarpur%20Uttar%20Pradesh&output=embed"
                 className="w-full h-32 border-0"
                 loading="lazy"
               ></iframe>
