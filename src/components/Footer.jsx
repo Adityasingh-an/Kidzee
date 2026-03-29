@@ -57,16 +57,16 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition">
+              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition" href="https://www.facebook.com/share/1EBwuSkqLC/?mibextid=wwXIfr">
                 <Facebook size={18} />
               </a>
-              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition">
+              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition" href="https://www.instagram.com/kidzee.akbarpur?igsh=MXNqYXgyYmNxMGFuYg%3D%3D&utm_source=qr">
                 <Instagram size={18} />
               </a>
-              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition">
+              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition" href="https://x.com/kidzeeakbarpur?s=11">
                 <Twitter size={18} />
               </a>
-              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition">
+              <a className="p-2 bg-white/10 rounded-lg hover:bg-secondary transition" href="https://www.youtube.com/@KidzeeAkbarpur">
                 <Youtube size={18} />
               </a>
             </div>
@@ -106,7 +106,7 @@ export default function Footer() {
             </h3>
 
             <ul className="flex flex-col gap-3">
-              {["PlayGroup", "Nursery", "Kindergarten", "Teacher Training"].map(
+              {["PlayGroup", "Nursery", "Kindergarten",].map(
                 (item) => (
                   <li key={item}>
                     <a
@@ -142,7 +142,7 @@ export default function Footer() {
 
               <div className="flex items-center gap-3">
                 <MapPin size={16} />
-                <span>697, Shastri Nagar, Akbarpur
+                <span>697, Shastri Nagar, Akbarpur,
                 Ambedkar Nagar, Uttar Pradesh
                 224122</span>
               </div>
