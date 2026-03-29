@@ -3,8 +3,8 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 export default function Contact() {
   const contactLinks = [
     { icon: '/assets/location.svg', title: 'Visit Us', details: '697,Shastri Nagar,Akbarpur,Ambedkar Nagar,U.P(224122)', href: 'https://www.google.com/maps?q=Kidzee%20Akbarpur%20Shastri%20Nagar%20Colony%20Akbarpur%20Uttar%20Pradesh&output=embed' },
-    { icon: '/assets/phone.svg', title: 'Call Us', details: '+91 6390181919 , 6391181919', href: 'tel:+91 6390181919 , 6391181919' },
-    { icon: '/assets/mail.svg', title: 'Email Us', details: 'mailto:kidzeeakbarpur@gmail.com', href: 'kidzeeakbarpur@gmail.com' },
+    { icon: '/assets/phone.svg', title: 'Call Us', details: '+91 6390181919 ,  +91 6391181919', href: 'tel:+91 6390181919' },
+    { icon: '/assets/mail.svg', title: 'Email Us', details: 'kidzeeakbarpur@gmail.com', href: 'kidzeeakbarpur@gmail.com' },
     { icon: '/assets/clock.svg', title: 'Hours', details: 'Mon - Fri: 8am - 4pm', href: '#' }
   ];
 
