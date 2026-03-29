@@ -38,14 +38,25 @@ export default function Header() {
           </div>
         </a>
 
-        {/* Desktop Nav - Mirroring reference site exactly */}
-        <nav className="hidden xl:flex gap-x-6 items-center flex-wrap justify-end flex-grow ml-4 mr-6">
+        {/* Desktop Nav - Responsive visibility */}
+        <nav className="hidden min-[748px]:flex min-[748px]:gap-x-3 min-[1048px]:gap-x-4 min-[1224px]:gap-x-5 min-[1440px]:gap-x-6 items-center flex-wrap justify-end flex-grow ml-2 mr-4 min-[1048px]:ml-4 min-[1048px]:mr-6">
           {navLinks.map((link) => {
+             let visibilityClass = "";
+             if (['Home', 'About Us', 'Notice'].includes(link.name)) {
+               visibilityClass = "min-[748px]:block";
+             } else if (['Programmes', 'FAQs'].includes(link.name)) {
+               visibilityClass = "hidden min-[1048px]:block";
+             } else if (['Gallery', 'Facilities', 'Contact Us'].includes(link.name)) {
+               visibilityClass = "hidden min-[1224px]:block";
+             } else {
+               visibilityClass = "hidden min-[1412px]:block";
+             }
+
              return (
                <a 
                   key={link.name} 
                   href={link.path} 
-                  className={`font-heading font-bold transition-all text-[13px] uppercase tracking-tight relative group whitespace-nowrap text-white hover:text-secondary hover:scale-105`}
+                  className={`font-heading font-bold transition-all text-[12px] min-[1048px]:text-[13px] min-[1440px]:text-[14px] uppercase tracking-tight relative group whitespace-nowrap text-white hover:text-secondary hover:scale-105 ${visibilityClass}`}
                >
                  {link.name}
                  <span className={`absolute -bottom-1 left-0 h-[3px] bg-secondary transition-all w-0 group-hover:w-full rounded-full`}></span>
@@ -54,20 +65,20 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Enroll Now Button */}
-        <a href="#admission" className="hidden sm:inline-flex items-center justify-center bg-secondary text-primary font-bold px-6 py-2 rounded-full hover:bg-purple-900 hover:text-white transition-all uppercase text-sm tracking-wider shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ml-auto xl:ml-0 mr-4 xl:mr-0 z-10 group/enroll">
+        {/* Enroll Now Button - Visible on md+ including large screens */}
+        <a href="#admission" className="hidden md:inline-flex items-center justify-center bg-secondary text-primary font-bold px-6 py-2 rounded-full hover:bg-purple-900 hover:text-white transition-all uppercase text-sm tracking-wider shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ml-auto xl:ml-0 mr-4 xl:mr-0 z-10 group/enroll">
           Enroll Now
           <ArrowRight className="ml-2 w-0 h-5 opacity-0 group-hover/enroll:w-5 group-hover/enroll:opacity-100 transition-all duration-300 ease-out" />
         </a>
 
         {/* Mobile Menu Button */}
-        <button className="xl:hidden text-white hover:text-secondary transition-colors sm:ml-0 ml-auto" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className="min-[1223px]:hidden text-white hover:text-secondary transition-colors sm:ml-0 ml-auto" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
            {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
 
       {/* Mobile Nav */}
-      <div className={`xl:hidden absolute top-full left-0 w-full bg-primary shadow-2xl transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-[80vh] py-2 border-t border-white/10 overflow-y-auto' : 'max-h-0 py-0'}`}>
+      <div className={`min-[1224px]:hidden absolute top-full left-0 w-full bg-primary shadow-2xl transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-[80vh] py-2 border-t border-white/10 overflow-y-auto' : 'max-h-0 py-0'}`}>
          <div className="container mx-auto px-4 flex flex-col">
             {navLinks.map((link) => (
                <a 

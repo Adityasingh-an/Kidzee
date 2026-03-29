@@ -176,7 +176,7 @@ export default function Hero() {
             This iterates over the 'features' array defined at the top of the file
             and displays a styled card for each one.
           */}
-          <div className="flex flex-nowrap md:flex-wrap justify-center lg:justify-start gap-1 pb-4 md:gap-4 xl:gap-5 w-full overflow-x-auto no-scrollbar">
+          <div className="flex flex-nowrap md:flex-wrap lg:flex-nowrap justify-center lg:justify-start gap-1 pb-4 md:gap-4 xl:gap-5 w-full overflow-x-auto no-scrollbar">
              {features.map((feature, idx) => (
                <div 
                  key={idx} 
