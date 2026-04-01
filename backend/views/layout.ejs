@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      background: #F5F3FF;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      height: 100vh;
+      background: #7C3AED;
+      color: white;
+      padding: 20px;
+      position: fixed;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px;
+      margin: 10px 0;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #5B21B6;
+    }
+
+    /* Content */
+    .main {
+      margin-left: 260px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Inputs */
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    /* Buttons */
+    button {
+      padding: 10px 15px;
+      background: #7C3AED;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5B21B6;
+    }
+
+    .delete-btn {
+      background: red;
+    }
+
+    /* Cards */
+    .item {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>🎓 Admin</h2>
+
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/gallery">📸 Gallery</a>
+    <a href="/admin/video">🎥 Videos</a>
+    <a href="/admin/notice">📝 Notices</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="card">
+      <%- body %>
+    </div>
+  </div>
+
+</body>
+</html>
