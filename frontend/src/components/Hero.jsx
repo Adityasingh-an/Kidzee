@@ -5,7 +5,7 @@
 // Import necessary icons from the 'lucide-react' library for use in the feature cards below
 import { Brain, GraduationCap, ShieldCheck, Users, Replace, Sparkles, Star, Rocket, BookOpen, Clock, Gamepad2 } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({ setShowForm, setShowEnquiry }) {
   // This array defines the five feature cards displayed at the bottom of the hero section.
   // We use objects to define the icon, main title, and subtitle for each feature.
   const features = [
@@ -49,13 +49,13 @@ export default function Hero() {
         These are the abstract and floating colorful shapes placed around the screen edges for a playful look.
       */}
       {/* Classic Enquiry Button on the right side - SMALLER ON MOBILE */}
-      <a 
-        href="#contact" 
-        className="absolute top-6 right-4 md:top-12 md:right-10 lg:right-16 z-40 bg-white border-2 border-primary text-primary px-4 md:px-8 py-1.5 md:py-3 rounded-full font-bold text-xs md:text-base shadow-[0_4px_14px_0_rgba(0,85,165,0.39)] hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(0,85,165,0.23)] transition-all duration-300 flex items-center gap-1.5 md:gap-2 group cursor-pointer"
-      >
-        Enquiry
-        <span className="group-hover:translate-x-1 transition-transform font-black">→</span>
-      </a>
+<button 
+  onClick={() => setShowEnquiry(true)}
+  className="absolute top-6 right-4 md:top-12 md:right-10 lg:right-16 z-40 bg-white border-2 border-primary text-primary px-4 md:px-8 py-1.5 md:py-3 rounded-full font-bold text-xs md:text-base shadow-[0_4px_14px_0_rgba(0,85,165,0.39)] hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(0,85,165,0.23)] transition-all duration-300 flex items-center gap-1.5 md:gap-2 group cursor-pointer"
+>
+  Enquiry
+  <span className="group-hover:translate-x-1 transition-transform font-black">→</span>
+</button>
       
       {/* Middle left large yellow circle with sparkles that rotates when hovered - HIDDEN ON MOBILE */}
       <div className="hidden md:flex absolute top-1/2 left-[5%] md:left-[10%] w-20 h-20 bg-secondary rounded-full shadow-xl items-center justify-center z-30 opacity-90 rotate-12 transform hover:rotate-180 transition-transform duration-700">

@@ -6,6 +6,7 @@ import Programs from './components/Programs';
 import Contact from './components/Contact';
 import About from './components/About';
 import AdmissionForm from "./components/Admissionform";
+import Enquiry from "./components/Enquiry"; // 🔥 ADD
 
 // Pages
 import Gallery from './pages/Gallery';
@@ -23,15 +24,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 // 🏠 Home Page
-function Home({ setShowForm }) {
+function Home({ setShowForm, setShowEnquiry }) { // 🔥 ADD
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-800">
-      <Header setShowForm={setShowForm} />
       
+      <Header setShowForm={setShowForm} />
+
       <main className="flex-grow pt-[72px] md:pt-[88px] relative overflow-hidden bg-white">
         
         <section id="home">
-          <Hero setShowForm={setShowForm} />
+          <Hero 
+            setShowForm={setShowForm} 
+            setShowEnquiry={setShowEnquiry} // 🔥 ADD
+          />
         </section>
 
         <section id="about">
@@ -57,25 +62,43 @@ function Home({ setShowForm }) {
 // 🎯 Main App
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false); // 🔥 ADD
 
   return (
     <Router>
 
-      {/* GLOBAL POPUP */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+      {/* 🔥 ENQUIRY POPUP */}
+      {showEnquiry && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
           
           <div className="relative animate-scaleIn">
-            
-            {/* CLOSE BUTTON (OUTSIDE) */}
+
             <button
-              onClick={() => setShowForm(false)}
-              className="absolute -top-4 -right-4 bg-red-500 text-white w-8 h-8 rounded-full"
+              onClick={() => setShowEnquiry(false)}
+              className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full shadow-lg"
             >
               ✕
             </button>
 
-            {/* 🔥 FIX HERE */}
+            <Enquiry onClose={() => setShowEnquiry(false)} />
+
+          </div>
+        </div>
+      )}
+
+      {/* 🔥 ADMISSION POPUP */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          
+          <div className="relative animate-scaleIn">
+
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full shadow-lg"
+            >
+              ✕
+            </button>
+
             <AdmissionForm onClose={() => setShowForm(false)} />
 
           </div>
@@ -85,7 +108,12 @@ function App() {
       <Routes>
 
         {/* Home */}
-        <Route path="/" element={<Home setShowForm={setShowForm} />} />
+        <Route path="/" element={
+          <Home 
+            setShowForm={setShowForm} 
+            setShowEnquiry={setShowEnquiry} // 🔥 ADD
+          />
+        } />
 
         {/* Pages */}
         <Route path="/gallery" element={<Gallery />} />
