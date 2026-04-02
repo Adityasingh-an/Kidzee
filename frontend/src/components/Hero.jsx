@@ -50,7 +50,7 @@ export default function Hero({ setShowForm, setShowEnquiry }) {
       */}
       {/* Classic Enquiry Button on the right side - SMALLER ON MOBILE */}
 <button 
-  onClick={() => setShowForm(true)}
+  onClick={() => setShowEnquiry(true)}
   className="absolute top-6 right-4 md:top-12 md:right-10 lg:right-16 z-40 bg-white border-2 border-primary text-primary px-4 md:px-8 py-1.5 md:py-3 rounded-full font-bold text-xs md:text-base shadow-[0_4px_14px_0_rgba(0,85,165,0.39)] hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(0,85,165,0.23)] transition-all duration-300 flex items-center gap-1.5 md:gap-2 group cursor-pointer"
 >
   Enquiry
