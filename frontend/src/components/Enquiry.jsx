@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 export default function EnquiryPopup({ onClose }) {
 
-  // ESC key close
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") onClose();
@@ -11,16 +10,18 @@ export default function EnquiryPopup({ onClose }) {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
-  // Call function
   const handleCall = () => {
     window.location.href = "tel:+916390181919";
+  };
+
+  const handleWhatsApp = () => {
+    window.open("https://wa.me/916390181919", "_blank");
   };
 
   return (
     <div style={styles.overlay}>
       <div style={styles.card}>
 
-        {/* Close Button */}
         <button style={styles.close} onClick={onClose}>×</button>
 
         <h2 style={styles.title}>📩 Enquiry Details</h2>
@@ -40,9 +41,15 @@ export default function EnquiryPopup({ onClose }) {
           </p>
         </div>
 
-        <button style={styles.callBtn} onClick={handleCall}>
-          📞 Call Now
-        </button>
+        <div style={styles.btnGroup}>
+          <button style={styles.callBtn} onClick={handleCall}>
+            📞 Call
+          </button>
+
+          <button style={styles.whatsappBtn} onClick={handleWhatsApp}>
+            💬 WhatsApp
+          </button>
+        </div>
 
       </div>
     </div>
@@ -56,22 +63,27 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    background: "rgba(0,0,0,0.6)",
+    background: "rgba(0,0,0,0.65)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 999
+    zIndex: 999,
+   
   },
 
   card: {
-    background: "linear-gradient(135deg, #E0F7FA, #FFF9C4)",
+    background: "linear-gradient(145deg, #e6f7ff, #fff8dc)",
     padding: "30px",
-    borderRadius: "18px",
-    width: "370px",
+    borderRadius: "20px",
+    width: "380px",
     textAlign: "center",
     position: "relative",
-    boxShadow: "0 15px 40px rgba(0,0,0,0.25)",
-    animation: "fadeIn 0.3s ease"
+    boxShadow: `
+      10px 10px 25px rgba(0,0,0,0.2),
+      -10px -10px 25px rgba(255,255,255,0.8)
+    `,
+    transform: "perspective(1000px) rotateX(3deg)",
+    animation: "popupFade 0.4s ease"
   },
 
   close: {
@@ -82,19 +94,19 @@ const styles = {
     background: "transparent",
     fontSize: "22px",
     cursor: "pointer",
-    color: "#555"
+    color: "#444"
   },
 
   title: {
     marginBottom: "20px",
-    color: "#0288D1",
-    fontWeight: "600"
+    color: "#0077b6",
+    fontWeight: "700"
   },
 
   infoBox: {
     textAlign: "left",
     marginBottom: "25px",
-    lineHeight: "1.6",
+    lineHeight: "1.7",
     fontSize: "14px",
     color: "#333"
   },
@@ -105,15 +117,35 @@ const styles = {
     color: "#555"
   },
 
+  btnGroup: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: "10px"
+  },
+
   callBtn: {
-    background: "linear-gradient(135deg, #0288D1, #00ACC1)",
+    flex: 1,
+    background: "linear-gradient(135deg, #0077b6, #00b4d8)",
     color: "#fff",
     border: "none",
-    padding: "12px 25px",
+    padding: "12px",
     borderRadius: "10px",
     cursor: "pointer",
-    fontSize: "15px",
-    fontWeight: "500",
-    transition: "0.3s"
+    fontWeight: "600",
+    transition: "0.3s",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.2)"
+  },
+
+  whatsappBtn: {
+    flex: 1,
+    background: "linear-gradient(135deg, #25D366, #128C7E)",
+    color: "#fff",
+    border: "none",
+    padding: "12px",
+    borderRadius: "10px",
+    cursor: "pointer",
+    fontWeight: "600",
+    transition: "0.3s",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.2)"
   }
 };
