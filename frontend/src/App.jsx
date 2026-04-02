@@ -14,6 +14,10 @@ import Videos from './pages/Videos';
 import Login from './pages/Login';
 import Admin from "./pages/Admin";
 import AdminVideo from "./pages/AdminVideo";
+import Facilities from "./pages/Facilities";
+import AboutPage from "./pages/AboutPage";
+import ProgramsPage from "./pages/ProgramsPage";
+import ContactPage from "./pages/ContactPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -22,9 +26,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function Home({ setShowForm }) {
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-800">
-      
       <Header setShowForm={setShowForm} />
-
+      
       <main className="flex-grow pt-[72px] md:pt-[88px] relative overflow-hidden bg-white">
         
         <section id="home">
@@ -88,6 +91,10 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/videos" element={<Videos />} />
+        <Route path="/facilities" element={<Facilities />} />
+        <Route path="/about" element={<AboutPage setShowForm={setShowForm} />} />
+        <Route path="/programs" element={<ProgramsPage setShowForm={setShowForm} />} />
+        <Route path="/contact" element={<ContactPage setShowForm={setShowForm} />} />
 
         {/* Admin */}
         <Route path="/login" element={<Login />} />

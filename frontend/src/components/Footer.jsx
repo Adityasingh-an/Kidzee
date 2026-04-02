@@ -8,8 +8,12 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Footer() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const scrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -33,22 +37,41 @@ export default function Footer() {
           
           {/* Logo + About (Same as Header) */}
           <div>
-            <a
-              href="#home"
-              className="flex items-center gap-2 group flex-shrink-0 mb-6"
-            >
-              <div className="h-16 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
-                <img
-                  src="/assets/logo.jpg"
-                  alt="Kidzee Logo"
-                  className="h-full w-auto object-contain"
-                />
-              </div>
+            {isHomePage ? (
+              <a
+                href="#home"
+                className="flex items-center gap-2 group flex-shrink-0 mb-6"
+              >
+                <div className="h-16 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                  <img
+                    src="/assets/logo.jpg"
+                    alt="Kidzee Logo"
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
 
-              <span className="text-white font-black text-2xl tracking-tight">
-                Kidzee Akbarpur
-              </span>
-            </a>
+                <span className="text-white font-black text-2xl tracking-tight">
+                  Kidzee Akbarpur
+                </span>
+              </a>
+            ) : (
+              <Link
+                to="/"
+                className="flex items-center gap-2 group flex-shrink-0 mb-6"
+              >
+                <div className="h-16 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                  <img
+                    src="/assets/logo.jpg"
+                    alt="Kidzee Logo"
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+
+                <span className="text-white font-black text-2xl tracking-tight">
+                  Kidzee Akbarpur
+                </span>
+              </Link>
+            )}
 
             <p className="text-sm text-bg-light/80 mb-6 leading-relaxed">
               Nurturing young minds with love and care at Kidzee Akbarpur.
@@ -80,20 +103,31 @@ export default function Footer() {
 
             <ul className="flex flex-col gap-3">
               {[
-                { name: "Admissions 2026-27", path: "#admission" },
-                { name: "Latest Notice Board", path: "#notice" },
-                { name: "School Gallery", path: "#gallery" },
-                { name: "Parent Portal", path: "#parent" },
-                { name: "Careers at Kidzee", path: "#careers" },
+                { name: "Admissions 2026-27", path: "/#admission", hash: "#admission", hybrid: true },
+                { name: "About Us", path: "/about", hash: "#about", hybrid: true },
+                { name: "Our Programmes", path: "/programs", hash: "#programmes", hybrid: true },
+                { name: "School Gallery", path: "/gallery", hybrid: false },
+                { name: "Our Facilities", path: "/facilities", hybrid: false },
+                { name: "Contact Us", path: "/contact", hash: "#contact", hybrid: true },
               ].map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.path}
-                    className="text-sm text-bg-light/80 hover:text-secondary transition hover:translate-x-1 flex items-center gap-2"
-                  >
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
-                    {link.name}
-                  </a>
+                  {link.hybrid && isHomePage ? (
+                    <a
+                      href={link.hash}
+                      className="text-sm text-bg-light/80 hover:text-secondary transition hover:translate-x-1 flex items-center gap-2"
+                    >
+                      <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="text-sm text-bg-light/80 hover:text-secondary transition hover:translate-x-1 flex items-center gap-2"
+                    >
+                      <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -109,13 +143,23 @@ export default function Footer() {
               {["PlayGroup", "Nursery", "Kindergarten",].map(
                 (item) => (
                   <li key={item}>
-                    <a
-                      href="#"
-                      className="text-sm text-bg-light/80 hover:text-secondary transition hover:translate-x-1 flex items-center gap-2"
-                    >
-                      <span className="w-2 h-2 bg-secondary rounded-full"></span>
-                      {item}
-                    </a>
+                    {isHomePage ? (
+                      <a
+                        href="#programmes"
+                        className="text-sm text-bg-light/80 hover:text-secondary transition hover:translate-x-1 flex items-center gap-2"
+                      >
+                        <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                        {item}
+                      </a>
+                    ) : (
+                      <Link
+                        to="/programs"
+                        className="text-sm text-bg-light/80 hover:text-secondary transition hover:translate-x-1 flex items-center gap-2"
+                      >
+                        <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                        {item}
+                      </Link>
+                    )}
                   </li>
                 )
               )}
