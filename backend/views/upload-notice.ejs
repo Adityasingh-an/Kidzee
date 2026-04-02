@@ -1,0 +1,106 @@
+<h2 style="margin-bottom:20px;">📝 Notice Manager</h2>
+
+<!-- Upload Card -->
+<div style="background:#fff;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+  
+  <h3>Add New Notice</h3>
+
+  <!-- ❌ action hata diya -->
+  <form id="noticeForm">
+    <input type="text" name="title" placeholder="Notice Title" required />
+    
+    <textarea name="description" placeholder="Notice Description" required></textarea>
+    
+    <button type="submit">➕ Add Notice</button>
+  </form>
+
+</div>
+
+<!-- List -->
+<h3>📂 Notices</h3>
+<div id="noticeList"></div>
+
+<script>
+  const form = document.getElementById("noticeForm");
+
+  // 🔥 Notice Upload (NO RELOAD)
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const data = {
+      title: formData.get("title"),
+      description: formData.get("description")
+    };
+
+    try {
+      const res = await fetch("/api/notices/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert("✅ Notice Added Successfully!");
+        form.reset();
+        loadNotices();
+      } else {
+        alert("❌ Failed to add notice");
+      }
+
+    } catch (error) {
+      alert("⚠️ Error occurred");
+      console.log(error);
+    }
+  });
+
+
+  // 📂 Load Notices
+  async function loadNotices() {
+    const res = await fetch('/api/notices');
+    const data = await res.json();
+
+    const container = document.getElementById('noticeList');
+    container.innerHTML = '';
+
+    data.forEach(n => {
+      const div = document.createElement('div');
+
+      div.style = `
+        background:#fff;
+        padding:10px;
+        margin-bottom:10px;
+        border-radius:10px;
+        box-shadow:0 3px 8px rgba(0,0,0,0.1);
+      `;
+
+      div.innerHTML = `
+        <h4>${n.title}</h4>
+        <p>${n.description}</p>
+
+        <button style="background:red;color:white;padding:5px 10px;border:none;border-radius:5px;cursor:pointer;"
+          onclick="deleteNotice('${n._id}')">
+          ❌ Delete
+        </button>
+      `;
+
+      container.appendChild(div);
+    });
+  }
+
+  // ❌ Delete Notice
+  async function deleteNotice(id) {
+    if (confirm("Delete this notice?")) {
+      await fetch('/api/notices/' + id, { method: 'DELETE' });
+      alert("🗑️ Deleted!");
+      loadNotices();
+    }
+  }
+
+  loadNotices();
+</script>
