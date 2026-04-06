@@ -26,7 +26,7 @@ function Login() {
         alert("Login Success ✅");
 
         // redirect to admin panel
-        window.location.href = "/admin";
+        window.location.href = "https://kidzee-yqhj.onrender.com/admin";
       } else {
         alert(data.message || "Login Failed ❌");
       }
