@@ -25,15 +25,17 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// ✅ CORS (future safe)
 app.use(cors({
-  origin: "*"
+  origin: "*",
+  credentials: true
 }));
 
 // 🔐 Session (ADMIN LOGIN FIX)
 app.use(session({
-  secret: 'kidzee-secret',
+  secret: process.env.SESSION_SECRET || 'kidzee-secret', // 🔥 better
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false, // 🔥 important change
   cookie: {
     secure: false
   }
@@ -45,6 +47,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // 🎨 EJS setup (admin panel)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
 app.use(expressLayouts);
 app.set('layout', 'layout');
 
@@ -63,8 +66,11 @@ app.use('/admin', adminRoutes);
 // React build serve karega
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// ⚡ IMPORTANT (React SPA routing fix)
-app.use((req, res) => {
+// ⚡ IMPORTANT: API & ADMIN ko bypass karo
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.startsWith('/admin')) {
+    return next(); // 🔥 yaha bahut important fix
+  }
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 

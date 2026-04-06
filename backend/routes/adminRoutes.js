@@ -9,16 +9,15 @@ function isAuthenticated(req, res, next) {
   return res.redirect('/admin/login');
 }
 
-// 🔑 Login Page
+// 🔑 Login Page (NO SIDEBAR)
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { layout: false }); // 🔥 IMPORTANT
 });
 
 // 🔑 Login POST
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  // 👉 change kar sakta hai apne hisaab se
   if (username === "admin" && password === "1234") {
     req.session.admin = true;
     return res.redirect('/admin');
