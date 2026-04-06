@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const session = require('express-session');
 
 const connectDB = require('./config/db');
 
@@ -26,6 +27,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: "*"
+}));
+
+// 🔐 Session (ADMIN LOGIN FIX)
+app.use(session({
+  secret: 'kidzee-secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false
+  }
 }));
 
 // 📂 Static uploads
@@ -52,8 +63,8 @@ app.use('/admin', adminRoutes);
 // React build serve karega
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// ⚡ IMPORTANT FIX (only non-api routes ke liye)
-app.use((req, res) => {
+// ⚡ IMPORTANT (React SPA routing fix)
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
