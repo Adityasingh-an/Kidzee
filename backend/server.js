@@ -28,7 +28,7 @@ app.use(cors());
 // 📂 Static uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// 🎨 EJS setup
+// 🎨 EJS setup (admin panel)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
@@ -43,17 +43,17 @@ app.use('/api/auth', authRoutes);
 // 🧑‍💻 Admin Routes (EJS)
 app.use('/admin', adminRoutes);
 
+// ================== 🔥 SERVE FRONTEND ==================
 
+// React build serve karega
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// ================== 🔥 IMPORTANT PART ==================
-
-app.get("/", (req, res) => {
-  res.send("API Running");
+// SPA routing fix
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 // ======================================================
-
-
 
 // 🚀 Start Server
 const PORT = process.env.PORT || 5000;
