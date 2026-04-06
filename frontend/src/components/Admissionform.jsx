@@ -34,7 +34,7 @@ export default function EnquiryForm({ onClose }) {
 
     emailjs.send(
       "service_ldrv4yk",
-      "template_1umlnbi",
+      "template_8asef1o",
       form,
       "7vYH3Y7d4szxdaWq3"
     )
