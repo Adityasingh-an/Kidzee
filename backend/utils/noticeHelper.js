@@ -1,16 +1,16 @@
-// utils/noticeHelper.js
+  // utils/noticeHelper.js
 
-const Notice = require('../models/Notice');
+  const Notice = require('../models/Notice');
 
-const createNoticeHelper = async (title, description) => {
-  const notice = new Notice({
-    title,
-    description
-  });
+  const createNoticeHelper = async (title, description) => {
+    const notice = new Notice({
+      title,
+      description
+    });
 
-  return await notice.save();
-};
+    return await notice.save();
+  };
 
-module.exports = {
-  createNoticeHelper
-};
+  module.exports = {
+    createNoticeHelper
+  };

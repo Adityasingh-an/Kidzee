@@ -47,12 +47,8 @@ app.use('/admin', adminRoutes);
 
 // ================== 🔥 IMPORTANT PART ==================
 
-// 👉 React build serve karo
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-// 👉 React routes handle karo
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+app.get("/", (req, res) => {
+  res.send("API Running");
 });
 
 // ======================================================
