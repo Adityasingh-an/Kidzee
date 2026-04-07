@@ -1,19 +1,25 @@
 const cloudinary = require('../config/cloudinary');
 
-const uploadToCloudinary = async (filePath, folder = "general", resourceType = "auto") => {
-  try {
-    const result = await cloudinary.uploader.upload(filePath, {
-      folder: folder,
-      resource_type: resourceType
-    });
+// ✅ buffer upload (important)
+const uploadToCloudinary = (fileBuffer, folder = "general", resourceType = "auto") => {
+  return new Promise((resolve, reject) => {
 
-    return {
-      url: result.secure_url,
-      public_id: result.public_id
-    };
-  } catch (error) {
-    throw new Error("Cloudinary Upload Failed ❌");
-  }
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder,
+        resource_type: resourceType
+      },
+      (error, result) => {
+        if (error) reject(error);
+        else resolve({
+          url: result.secure_url,
+          public_id: result.public_id
+        });
+      }
+    );
+
+    stream.end(fileBuffer);
+  });
 };
 
 module.exports = uploadToCloudinary;

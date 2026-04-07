@@ -1,11 +1,14 @@
 const uploadToCloudinary = require('../utils/cloudinaryUpload');
 const Video = require('../models/Video');
-const fs = require('fs');
 
 exports.uploadVideo = async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No video uploaded ❌" });
+    }
+
     const result = await uploadToCloudinary(
-      req.file.path,
+      req.file.buffer,
       "videos",
       "video"
     );
@@ -18,12 +21,13 @@ exports.uploadVideo = async (req, res) => {
 
     await newVideo.save();
 
-    fs.unlinkSync(req.file.path);
+    res.json({
+      message: "Video uploaded ✅",
+      data: newVideo
+    });
 
-    res.json({ message: "Video Uploaded ✅", data: newVideo });
-
- } catch (error) {
-  console.error("ERROR:", error);  // 👈 ye add karo
-  res.status(500).json({ error: error.message });
-}
+  } catch (error) {
+    console.error("VIDEO ERROR:", error);
+    res.status(500).json({ error: error.message });
+  }
 };

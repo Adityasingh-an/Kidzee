@@ -1,10 +1,17 @@
 const uploadToCloudinary = require('../utils/cloudinaryUpload');
 const Gallery = require('../models/Gallery');
-const fs = require('fs');
 
 exports.uploadImage = async (req, res) => {
   try {
-    const result = await uploadToCloudinary(req.file.path, "gallery");
+    if (!req.file) {
+      return res.status(400).json({ message: "No image uploaded ❌" });
+    }
+
+    const result = await uploadToCloudinary(
+      req.file.buffer,
+      "gallery",
+      "image"
+    );
 
     const newImage = new Gallery({
       imageUrl: result.url,
@@ -14,11 +21,13 @@ exports.uploadImage = async (req, res) => {
 
     await newImage.save();
 
-    fs.unlinkSync(req.file.path);
-
-    res.json({ message: "Image Uploaded ✅", data: newImage });
+    res.json({
+      message: "Image uploaded ✅",
+      data: newImage
+    });
 
   } catch (error) {
+    console.error("IMAGE ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };
