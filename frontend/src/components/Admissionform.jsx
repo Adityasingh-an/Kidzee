@@ -61,7 +61,7 @@ export default function EnquiryForm({ onClose }) {
     emailjs
       .send(
         "service_km4odue",
-        "template_dhg5ozo",
+        "template_6mgzyhv",
         templateParams,
         "yPbwbGe8S1oThjNHg"
       )
