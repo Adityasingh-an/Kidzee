@@ -44,10 +44,18 @@ export default function EnquiryForm({ onClose }) {
     setErrors({});
     setLoading(true);
 
-    // ✅ FIX ONLY (name field added)
+    // ✅ ONLY FIX APPLIED (no UI change)
     const templateParams = {
-      ...form,
-      name: form.firstName + " " + form.lastName
+      name: (form.firstName || "") + " " + (form.lastName || ""),
+      firstName: form.firstName || "N/A",
+      lastName: form.lastName || "N/A",
+      email: form.email || "N/A",
+      mobile: form.mobile || "N/A",
+      pincode: form.pincode || "N/A",
+      country: form.country || "N/A",
+      state: form.state || "N/A",
+      city: form.city || "N/A",
+      location: form.location || "N/A"
     };
 
     emailjs
