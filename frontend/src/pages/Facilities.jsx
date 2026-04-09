@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Enquiry from "../components/Enquiry";
+import { useState } from "react";
 import { 
   School, 
   Palette, 
@@ -55,6 +57,8 @@ const facilities = [
 ];
 
 const Facilities = () => {
+  const [showEnquiry, setShowEnquiry] = useState(false);
+
   return (
     <div
       className="min-h-screen flex flex-col font-sans"
@@ -111,12 +115,34 @@ const Facilities = () => {
              <p className="text-lg mb-8 opacity-90 max-w-xl mx-auto relative z-10">
                Schedule a school tour today and experience our facilities first-hand.
              </p>
-             <button className="bg-secondary text-primary font-bold px-8 py-3 rounded-full hover:bg-white hover:text-primary transition-all uppercase tracking-wider relative z-10 shadow-lg">
+             <button 
+               onClick={() => setShowEnquiry(true)}
+               className="bg-secondary text-primary font-bold px-8 py-3 rounded-full hover:bg-white hover:text-primary transition-all uppercase tracking-wider relative z-10 shadow-lg"
+             >
                Book a Tour
              </button>
           </div>
         </div>
       </main>
+
+      {/* 🔥 ENQUIRY POPUP */}
+      {showEnquiry && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          
+          <div className="relative animate-scaleIn">
+
+            <button
+              onClick={() => setShowEnquiry(false)}
+              className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full shadow-lg"
+            >
+              ✕
+            </button>
+
+            <Enquiry onClose={() => setShowEnquiry(false)} />
+
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

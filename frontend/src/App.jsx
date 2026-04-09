@@ -23,7 +23,7 @@ import ContactPage from "./pages/ContactPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-// 🏠 Home Page
+
 function Home({ setShowForm, setShowEnquiry }) {
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-800">
