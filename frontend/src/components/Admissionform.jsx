@@ -44,7 +44,6 @@ export default function EnquiryForm({ onClose }) {
     setErrors({});
     setLoading(true);
 
-    // ✅ ONLY FIX APPLIED (no UI change)
     const templateParams = {
       name: (form.firstName || "") + " " + (form.lastName || ""),
       firstName: form.firstName || "N/A",
@@ -95,7 +94,7 @@ export default function EnquiryForm({ onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-3">
 
-      <div className="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl overflow-hidden shadow-2xl">
 
         <div className="bg-gradient-to-r from-yellow-300 to-yellow-200 px-6 py-4">
           <h2 className="text-2xl font-bold text-black tracking-wide">
@@ -118,7 +117,7 @@ export default function EnquiryForm({ onClose }) {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 pb-6">
 
             <div>
               <input
