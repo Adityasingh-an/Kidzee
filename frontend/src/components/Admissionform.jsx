@@ -106,7 +106,7 @@ export default function EnquiryForm({ onClose }) {
 
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-md"
+           className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-md"
           >
             ✕
           </button>
