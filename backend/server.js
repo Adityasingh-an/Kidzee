@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const session = require('express-session');
 
 const connectDB = require('./config/db');
 
@@ -23,18 +24,35 @@ connectDB();
 // 🧩 Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+// ✅ CORS (future safe)
+app.use(cors({
+  origin: "*",
+  credentials: true
+}));
+
+// 🔐 Session (ADMIN LOGIN FIX)
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'kidzee-secret', // 🔥 better
+  resave: false,
+  saveUninitialized: false, // 🔥 important change
+  cookie: {
+    secure: false
+  }
+}));
 
 // 📂 Static uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// 🎨 EJS setup
+// 🎨 EJS setup (admin panel)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
 app.use(expressLayouts);
 app.set('layout', 'layout');
 
-// 🛣️ API Routes
+// ================== 🛣️ API ROUTES ==================
+
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/notices', noticeRoutes);
@@ -43,21 +61,20 @@ app.use('/api/auth', authRoutes);
 // 🧑‍💻 Admin Routes (EJS)
 app.use('/admin', adminRoutes);
 
+// ================== 🔥 FRONTEND SERVE ==================
 
-
-// ================== 🔥 IMPORTANT PART ==================
-
-// 👉 React build serve karo
+// React build serve karega
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// 👉 React routes handle karo
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+// ⚡ IMPORTANT: API & ADMIN ko bypass karo
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.startsWith('/admin')) {
+    return next(); // 🔥 yaha bahut important fix
+  }
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
 // ======================================================
-
-
 
 // 🚀 Start Server
 const PORT = process.env.PORT || 5000;

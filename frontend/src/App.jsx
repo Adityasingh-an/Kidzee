@@ -6,6 +6,7 @@ import Programs from './components/Programs';
 import Contact from './components/Contact';
 import About from './components/About';
 import AdmissionForm from "./components/Admissionform";
+import Enquiry from "./components/Enquiry";
 
 // Pages
 import Gallery from './pages/Gallery';
@@ -22,26 +23,35 @@ import ContactPage from "./pages/ContactPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-// 🏠 Home Page
-function Home({ setShowForm }) {
+
+function Home({ setShowForm, setShowEnquiry }) {
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-800">
-      <Header setShowForm={setShowForm} />
       
+      <Header setShowForm={setShowForm} />
+
       <main className="flex-grow pt-[72px] md:pt-[88px] relative overflow-hidden bg-white">
         
+        {/* Hero */}
         <section id="home">
-          <Hero setShowForm={setShowForm} />
+          <Hero 
+            setShowForm={setShowForm} 
+            setShowEnquiry={setShowEnquiry}
+          />
         </section>
 
+
+        {/* About */}
         <section id="about">
           <About />
         </section>
 
+        {/* Programs 🔥 FIXED */}
         <section id="programmes">
-          <Programs />
+          <Programs setShowEnquiry={setShowEnquiry} />
         </section>
 
+        {/* Contact */}
         <section id="contact">
           <Contact />
         </section>
@@ -57,25 +67,43 @@ function Home({ setShowForm }) {
 // 🎯 Main App
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false);
 
   return (
     <Router>
 
-      {/* GLOBAL POPUP */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+      {/* 🔥 ENQUIRY POPUP */}
+      {showEnquiry && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
           
           <div className="relative animate-scaleIn">
-            
-            {/* CLOSE BUTTON (OUTSIDE) */}
+
             <button
-              onClick={() => setShowForm(false)}
-              className="absolute -top-4 -right-4 bg-red-500 text-white w-8 h-8 rounded-full"
+              onClick={() => setShowEnquiry(false)}
+              className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full shadow-lg"
             >
               ✕
             </button>
 
-            {/* 🔥 FIX HERE */}
+            <Enquiry onClose={() => setShowEnquiry(false)} />
+
+          </div>
+        </div>
+      )}
+
+      {/* 🔥 ADMISSION POPUP */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          
+          <div className="relative animate-scaleIn">
+
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full shadow-lg"
+            >
+              ✕
+            </button>
+
             <AdmissionForm onClose={() => setShowForm(false)} />
 
           </div>
@@ -85,15 +113,34 @@ function App() {
       <Routes>
 
         {/* Home */}
-        <Route path="/" element={<Home setShowForm={setShowForm} />} />
+        <Route 
+          path="/" 
+          element={
+            <Home 
+              setShowForm={setShowForm} 
+              setShowEnquiry={setShowEnquiry} 
+            />
+          } 
+        />
 
         {/* Pages */}
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/facilities" element={<Facilities />} />
+
+        {/* 🔥 FIXED PROGRAMS PAGE */}
+        <Route 
+          path="/programs" 
+          element={
+            <ProgramsPage 
+              setShowForm={setShowForm} 
+              setShowEnquiry={setShowEnquiry} 
+            />
+          } 
+        />
+
         <Route path="/about" element={<AboutPage setShowForm={setShowForm} />} />
-        <Route path="/programs" element={<ProgramsPage setShowForm={setShowForm} />} />
         <Route path="/contact" element={<ContactPage setShowForm={setShowForm} />} />
 
         {/* Admin */}

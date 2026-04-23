@@ -3,12 +3,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Programs from '../components/Programs';
 
-const ProgramsPage = ({ setShowForm }) => {
+const ProgramsPage = ({ setShowForm, setShowEnquiry }) => {
   return (
     <div className="min-h-screen flex flex-col font-sans">
       <Header setShowForm={setShowForm} />
       <main className="flex-grow pt-[80px] md:pt-[100px]">
-        <Programs />
+        <Programs setShowEnquiry={setShowEnquiry} />
       </main>
       <Footer />
     </div>
