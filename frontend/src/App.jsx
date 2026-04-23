@@ -39,51 +39,7 @@ function Home({ setShowForm, setShowEnquiry }) {
             setShowEnquiry={setShowEnquiry}
           />
         </section>
-        {/* Hero */}
-<section id="home">
-  <Hero 
-    setShowForm={setShowForm} 
-    setShowEnquiry={setShowEnquiry}
-  />
-</section>
 
-{/* 🔥 SEO Content START (SAFE ADDITION) */}
-<section className="px-6 py-10 max-w-6xl mx-auto text-gray-700">
-  
-  <h2 className="text-3xl font-bold mb-4">
-    Best Play School in Akbarpur – Kidzee Akbarpur
-  </h2>
-
-  <p className="mb-4">
-    Kidzee Akbarpur is one of the best preschools in Akbarpur, dedicated to providing quality early childhood education in a safe and nurturing environment. We focus on the overall development of children through fun learning, creative activities, and interactive teaching methods.
-  </p>
-
-  <h3 className="text-2xl font-semibold mt-6 mb-2">
-    Why Choose Kidzee Akbarpur?
-  </h3>
-
-  <p className="mb-4">
-    At Kidzee Akbarpur, we believe every child is unique. Our experienced teachers ensure personalized attention, helping children grow academically, socially, and emotionally.
-  </p>
-
-  <ul className="list-disc pl-5 space-y-1">
-    <li>Safe & secure environment</li>
-    <li>Experienced and caring teachers</li>
-    <li>Smart learning techniques</li>
-    <li>Activity-based curriculum</li>
-    <li>Focus on overall child development</li>
-  </ul>
-
-  <h3 className="text-2xl font-semibold mt-6 mb-2">
-    Admission Open in Akbarpur
-  </h3>
-
-  <p>
-    Admissions are now open at Kidzee Akbarpur. Give your child the best start with one of the top play schools in Akbarpur.
-  </p>
-
-</section>
-{/* 🔥 SEO Content END */}
 
         {/* About */}
         <section id="about">
